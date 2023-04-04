@@ -11,16 +11,19 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 from datetime import timedelta
 from pathlib import Path
+import environ
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+env = environ.Env()
+environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-usi&ft1f8*%l#)4g!8sdlu)o&0ia3!1jr9xg)ri2k$plb@th9q'
+SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
